@@ -107,7 +107,7 @@ int stoiva_full(STOIVA s)
 			return 0;
 }
 
-// πηση to x sti stoiva s
+// Γ°Γ§Γ³Γ§ to x sti stoiva s
 // epistrefei TRUE: se periptwsi epitixias
 // FALSE: se periptwsi apotixias
 int stoiva_push(STOIVA *s, element x) // orisma by reference gia to top epireazei ta dedomena kai element x to deytero stoixeio pou tha eisagw
