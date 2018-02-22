@@ -1,43 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//typedef int element;          // typos dedomenwn listas. synonimo ston int
-
 struct node{			   /* Typos komvou listas */
-   int info; 			   /* dedomena */
-   struct node *ptr;      /* epomenos */
-}*top,*top1,*temp;
+   int data; 			   /* dedomena */
+   struct node *next;      /* epomenos */
+   
+}; 			
 
+struct node *top,*top1,*temp; // Dilosi stigiotypwn ths domis
 
-int topelement();
-void push(int data);
-void pop();
-void empty();
-void display();
-//void destroy();
-void stack_count();
-void create();
+int topelement();                                     // Function pou deixnei to top stoixeio ths stoivas
+void push(int element);                               // Function eisagosgis stoixeiou
+void pop();											  // Function eksagogis stoixeioy
+void empty();										  // Elegxos an h stoiva einai adeia
+void display();										  // print th stoiva
+void stack_count();									  // Function me counter to opoio metraei ta stoixeia
+void init();                                          // arxikopoihsh stoivas pou dexnei NULL
 
-int count = 0;
+int count = 0;										 // arxikopoihsh metavliti count
 
 void main()
 {
-	int no,choice,e;
+	int element,choice,e;
 	
-	
-	printf("\n---------------------------------\n");
-	printf("\tSTACK MEMORY APP: ");
-	printf("\n---------------------------------\n");
+	printf(" \n");
+	printf(" | Data  Structure.  \n");
+	printf(" | Project 5.  \n");
+	printf(" | Stack - Linked List Memory app.  \n");
+	printf("  \n\n");
 			
-	printf("  [1] Push an Element|\n");
-	printf("  [2] Pop an Element |\n");
-	printf("  [3] top Element    |\n");
-	printf("  [4] Print The Stack|\n");
-	printf("  [5] stack count    |\n");
-	printf("  [6] Exit           |\n");
-	printf("  ____________________\n");
+	printf("      [  MENU  ]  \n\n");
+//	printf("  ____________________\n");
+	printf("  [1] Push an Element\n");
+	printf("  [2] Pop an Element \n");
+	printf("  [3] top Element    \n");
+	printf("  [4] Print The Stack\n");
+	printf("  [5] stack count    \n");
+	printf("  [6] Exit           \n");
+//	printf("  ____________________\n");
 		
-	create();		
+	init();		
 
 	while(1)
 	{
@@ -52,8 +54,8 @@ void main()
 		{
 			case 1:
 				printf("  ~Stack: Push an element: ");
-				scanf("%d", &no); 
-				push(no);
+				scanf("%d", &element); 
+				push(element);
 				break;
 			case 2:
 				pop();
@@ -72,15 +74,16 @@ void main()
 				break;*/
 				
 			case 4:
-				exit(0);
-				
-			case 5:
 				display();
 				break;
 				
-			case 6:
+			case 5:
 				stack_count();
 				break;
+				
+			case 6:
+				exit(0);
+				
 				
 			default:
 				printf("  pls try again and choose 1-4!!");
@@ -91,7 +94,7 @@ void main()
 }
 
 	//dhmioyrgia adeias soivas
-void create()
+void init()
 {
 	top=NULL;
 }		
@@ -99,27 +102,27 @@ void create()
 	//* Count stack elements */
 void stack_count()
 {
-    printf("\n No. of elements in stack : %d", count);
+    printf("\n ~Sack: Number of elements in stack : %d", count);
 }
 
-void push(int data) 
+void push(int element) 
 {
 	if(top == NULL)
 	{
-		top=(struct node*)malloc(sizeof(struct node));
-		top->ptr=NULL;
-		top->info=data;
+		top=(struct node*)malloc(sizeof(struct node));   // an to top einai NULL kanei desmeysi mnimis gia to stoixeio
+		top->next=NULL;                                    // O dektis tou top deixnei sto NULL
+		top->data=element;                                   // h metavliti top exei prosvasei sto data ths domis kai apothikeyei to stoixeio
 	}
 	
 	else
 	{
-		temp=(struct node*)malloc(sizeof(struct node));
-		temp->ptr=top;
-		temp->info=data;
-		top=temp;
+		temp=(struct node*)malloc(sizeof(struct node));   //Se periptwsi p den einai null desmeyei xwro se mia mevlatiti temp
+		temp->next=top;                                      // O deiktis tis temp deixnei sto top 
+		temp->data=element;                                     // to data tou temp apothikeyei to stoixeo
+		top=temp;                                                  //ara sth metavliti apothikeyete to stoixeio temp
 	}
 	
-	count++;
+	count++;                                               // ayksanei ton arithmo twn stoixeiwn
 }
 
 void display()
@@ -128,23 +131,23 @@ void display()
 	
    	if(top1 == NULL)
    	{
-   		printf("\nStack is Empty!!!\n");
+   		printf("\n  ~Stack: is Empty!!!\n");
       	return;
    	}
       
 	while(top1!=NULL)
 	{
-		printf("[%d]", top1->info);
-		top1=top1->ptr;
+		printf("[%d]", top1->data);
+		top1=top1->next;
 	}
       
 }    
 
 void pop()
 {
-	top1=top;
+ 	top1=top;                                 // h top apthikeyete se mia alli metavliti top1
 	
-	if (top1 == NULL)
+	if (top1 == NULL)                             // an h top einai NULL kanei print to error
 	{
 		printf("Error stack is empty");
 		return;
@@ -152,11 +155,11 @@ void pop()
 			
 	else
 	{
-		top1=top1->ptr;
-		printf("Popped Element: %d", top->info);
-		free(top);
-		top=top1;
-		count--;
+		top1=top1->next;                             // sto top1 apothikeyte o deiktis o opoios deixni sto NULL 
+		printf("Popped Element: %d", top->data);       // Provasi sto data thw top
+		free(top);                                       // apodesmeysi statikis mnimis
+		top=top1;                                           // top1 apothikeyetai sto top
+		count--;                                               // meiwnete to count kata ena meta tin aferesi stoixeiou
 	}
 		
 }
@@ -164,8 +167,7 @@ void pop()
 /* Return top element */
 int topelement()
 	{
-    	return(top->info);
+    	return(top->data);
 	}
 	
-
 
