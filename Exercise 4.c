@@ -68,10 +68,11 @@ main()
 				system("pause");
 				break;
 			case 3:                                                    // print ths stoivas
-				printf("\n  %d elements: \n", st.top+1);
+				printf("\n  %d elements: \n\n", st.top+1);
 				for (i=0; i<=st.top; i++)
 				{
 					printf("  [%3d ]",st.pinakas[i]);
+					printf("\n\n");
 				}
 				system("pause");
 				break;
