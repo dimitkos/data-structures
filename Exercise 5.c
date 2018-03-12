@@ -14,10 +14,8 @@ void push(int element);                               // Function eisagosgis sto
 void pop();											  // Function eksagogis stoixeioy
 void empty();										  // Elegxos an h stoiva einai adeia
 void display();										  // print th stoiva
-void stack_count();									  // Function me counter to opoio metraei ta stoixeia
 void init();                                          // arxikopoihsh stoivas pou dexnei NULL
 
-int count = 0;										 // arxikopoihsh metavliti count
 
 void main()
 {
@@ -39,10 +37,8 @@ void main()
 	//	printf("  ____________________\n");
 		printf("  [1] Push an Element\n");
 		printf("  [2] Pop an Element \n");
-		printf("  [3] top Element    \n");
-		printf("  [4] Print The Stack\n");
-		printf("  [5] stack count    \n");
-		printf("  [6] Exit           \n");
+		printf("  [3] Print The Stack\n");
+		printf("  [4] Exit           \n");
 	//	printf("  ____________________\n");
 	
         do
@@ -62,26 +58,11 @@ void main()
 				pop();
 				break;
 			case 3:
-				if (top == NULL)
-					printf("\n  No elements in stack");
-				else
-				{
-					e = topelement();
-					printf("\n  Top element: %d\n",e);
-				}
-				system("pause");
-				break;
-			case 4:
 				display();
 				system("pause");
 				break;
 				
-			case 5:
-				stack_count();
-				system("pause");
-				break;
-				
-			case 6:
+			case 4:
 				exit(0);
 				
 				
@@ -99,12 +80,6 @@ void init()
 	top=NULL;
 }		
 
-	//* Count stack elements */
-void stack_count()
-{
-    printf("\n  %d numbers in Stack\n", count);
-}
-
 void push(int element) 
 {
 	if(top == NULL)     //an den yparxei stoixeio sth lista
@@ -119,10 +94,9 @@ void push(int element)
 		temp=(struct node*)malloc(sizeof(struct node));   //Se periptwsi p den einai null desmeyei xwro se mia mevlatiti temp(prosorini)
 		temp->next=top;                                      // O deiktis tis temp deixnei sto top 
 		temp->data=element;                                     // Sth metavliti temp apothikeyete to data pou eisagei o xristis
-		top=temp;                                                  //ara sth metavliti apothikeyete to stoixeio temp
+		top=temp;                                                  //ara sth metavliti top apothikeyete to stoixeio temp
 	}
 	
-	count++;                                               // ayksanei ton arithmo twn stoixeiwn
 }
 
 void display()
@@ -159,15 +133,6 @@ void pop()
 		printf("\n  Popped Element: %d", top->data);       // ektypwsi tou stoy xeixeiou sth thesi top
 		free(top);                                       // apodesmeysi dinamikis  mnimis
 		top=top1;                                           // top1 apothikeyetai sto top
-		count--;                                               // meiwnete to count kata ena meta tin aferesi stoixeiou
 	}
 		
 }
-	
-/* Return top element */
-int topelement()
-	{
-    	return(top->data);
-	}
-	
-
