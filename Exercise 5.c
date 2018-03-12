@@ -12,7 +12,6 @@ struct node *top,*top1,*temp; // Dilosi stigiotypwn ths domis
 int topelement();                                     // Function pou deixnei to top stoixeio ths stoivas
 void push(int element);                               // Function eisagosgis stoixeiou
 void pop();											  // Function eksagogis stoixeioy
-void empty();										  // Elegxos an h stoiva einai adeia
 void display();										  // print th stoiva
 void init();                                          // arxikopoihsh stoivas pou dexnei NULL
 
