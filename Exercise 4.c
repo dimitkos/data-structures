@@ -72,8 +72,8 @@ main()
 				for (i=0; i<=st.top; i++)
 				{
 					printf("  [%3d ]",st.pinakas[i]);
-					printf("\n\n");
 				}
+				printf("\n\n");
 				system("pause");
 				break;
 			case 4:
