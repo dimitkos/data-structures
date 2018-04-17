@@ -140,3 +140,4 @@ int stoiva_pop(STOIVA *s, element *x) // to deytero orisma by reference prokeime
 		return 1;
 	}
 }
+ 
