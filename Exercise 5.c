@@ -133,3 +133,4 @@ void pop()
 		top=top1;                                                // top1 apothikeyeei to prohgoumeno stoixeio
 	}
 }
+ 
